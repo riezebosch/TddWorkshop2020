@@ -56,6 +56,20 @@ namespace TddWorkshop.Tests
                 .Should()
                 .Be("input");
         }
+        
+        [Fact]
+        public void NoCheckCodeReturnsFalse() => 
+            IbanValidator
+                .IsValid("NLXX INGB 0002 4455 88")
+                .Should()
+                .BeFalse();
+        
+        [Fact]
+        public void InvalidBankCodeReturnsFalse() => 
+            IbanValidator
+                .IsValid("NL86XXXX0002445588")
+                .Should()
+                .BeFalse();
 
         [InlineData("", false, "empty")]
         [InlineData("xxx", false, "obviously wrong")]

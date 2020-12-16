@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace TddWorkshop
 {
@@ -7,21 +8,15 @@ namespace TddWorkshop
         public static bool IsValid(string input)
         {
             if (input == null)
-            {
                 throw new ArgumentNullException(nameof(input));
-            }
-            
-            if (string.IsNullOrEmpty(input))
-            {
-                return false;
-            }
 
-            if (!input.StartsWith("NL"))
-            {
-                return false;
-            }
+            input = input.Replace(" ", "");
             
-            return true;
+            return 
+                !string.IsNullOrEmpty(input) 
+                && input.StartsWith("NL")
+                && int.TryParse(input.Substring(2, 2), out _)
+                && new[] { "INGB", "RABO" }.Contains(input.Substring(4, 4));
         }
     }
 }
