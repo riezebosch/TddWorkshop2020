@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace TddWorkshop
 {
     public interface IBankCodeProvider
     {
-        string[] BankCodes();
+        Task<string[]> BankCodes();
     }
 }

@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace TddWorkshop
 {
     internal interface IIbanValidator
     {
-        bool Check(string input);
+        Task<bool> Check(string input);
     }
 }

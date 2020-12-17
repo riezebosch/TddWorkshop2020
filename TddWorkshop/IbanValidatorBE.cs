@@ -1,10 +1,10 @@
+using System.Threading.Tasks;
+
 namespace TddWorkshop
 {
     internal class IbanValidatorBE : IIbanValidator
     {
-        public bool Check(string input)
-        {
-            return true;
-        }
+        public Task<bool> Check(string input) => 
+            Task.FromResult(true);
     }
 }

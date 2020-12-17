@@ -1,8 +1,10 @@
+using System.Threading.Tasks;
+
 namespace TddWorkshop.Tests
 {
     internal class BankCodeProvider : IBankCodeProvider
     {
-        public string[] BankCodes() => 
-            new[] { "INGB", "RABO" };
+        public Task<string[]> BankCodes() => 
+            Task.FromResult(new[] { "INGB", "RABO" });
     }
 }

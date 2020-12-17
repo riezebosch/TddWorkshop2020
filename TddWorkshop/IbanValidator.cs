@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace TddWorkshop
 {
@@ -18,7 +19,7 @@ namespace TddWorkshop
             };
         }
         
-        public bool IsValid(string input)
+        public async Task<bool> IsValid(string input)
         {
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
@@ -30,7 +31,7 @@ namespace TddWorkshop
             }
             
             return _validators.TryGetValue(input.Substring(0, CountryCodeLength), out var validator) 
-                   && validator.Check(input);
+                   && await validator.Check(input);
         }
     }
 }

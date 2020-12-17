@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TddWorkshop.Tests", "TddWor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TddWorkshop", "TddWorkshop\TddWorkshop.csproj", "{FE55D1BB-D13C-4C98-8CE3-65BF57EF4F65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankCode.Rebus", "BankCode.Rebus\BankCode.Rebus.csproj", "{08043C3B-6B75-4531-807D-5D7F6D05FC68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankCode.Rebus.IntegrationTests", "BankCode.Rebus.IntegrationTests\BankCode.Rebus.IntegrationTests.csproj", "{853E7E23-E812-41D7-A2B9-D78590E1F0CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{FE55D1BB-D13C-4C98-8CE3-65BF57EF4F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE55D1BB-D13C-4C98-8CE3-65BF57EF4F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE55D1BB-D13C-4C98-8CE3-65BF57EF4F65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08043C3B-6B75-4531-807D-5D7F6D05FC68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08043C3B-6B75-4531-807D-5D7F6D05FC68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08043C3B-6B75-4531-807D-5D7F6D05FC68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08043C3B-6B75-4531-807D-5D7F6D05FC68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{853E7E23-E812-41D7-A2B9-D78590E1F0CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{853E7E23-E812-41D7-A2B9-D78590E1F0CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{853E7E23-E812-41D7-A2B9-D78590E1F0CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{853E7E23-E812-41D7-A2B9-D78590E1F0CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
