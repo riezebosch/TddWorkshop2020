@@ -1,4 +1,4 @@
-namespace TddWorkshop
+namespace TddWorkshop.Tests
 {
     internal class BankCodeProvider : IBankCodeProvider
     {

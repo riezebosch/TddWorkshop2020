@@ -3,17 +3,22 @@ using System.Collections.Generic;
 
 namespace TddWorkshop
 {
-    public static class IbanValidator
+    public class IbanValidator
     {
         private const int CountryCodeLength = 2;
 
-        private static readonly IDictionary<string, IIbanValidator> Validators = new Dictionary<string, IIbanValidator>
+        private readonly IDictionary<string, IIbanValidator> _validators;
+
+        public IbanValidator(IBankCodeProvider bankCodeProvider)
         {
-            ["BE"] = new IbanValidatorBE(),
-            ["NL"] = new IbanValidatorNL(new BankCodeProvider())
-        };
+            _validators = new Dictionary<string, IIbanValidator>
+            {
+                ["BE"] = new IbanValidatorBE(),
+                ["NL"] = new IbanValidatorNL(bankCodeProvider)
+            };
+        }
         
-        public static bool IsValid(string input)
+        public bool IsValid(string input)
         {
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
@@ -24,7 +29,7 @@ namespace TddWorkshop
                 return false;
             }
             
-            return Validators.TryGetValue(input.Substring(0, CountryCodeLength), out var validator) 
+            return _validators.TryGetValue(input.Substring(0, CountryCodeLength), out var validator) 
                    && validator.Check(input);
         }
     }

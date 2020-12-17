@@ -1,6 +1,6 @@
 namespace TddWorkshop
 {
-    internal interface IBankCodeProvider
+    public interface IBankCodeProvider
     {
         string[] BankCodes();
     }

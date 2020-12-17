@@ -1,5 +1,7 @@
 using System;
 using FluentAssertions;
+using Moq;
+using NSubstitute;
 using Xunit;
 
 namespace TddWorkshop.Tests
@@ -13,7 +15,7 @@ namespace TddWorkshop.Tests
             var input = "NL86 INGB 0002 4455 88";
             
             // Act
-            var result = IbanValidator.IsValid(input);
+            var result = new IbanValidator(new BankCodeProvider()).IsValid(input);
 
             // Assert
             Assert.True(result);
@@ -26,7 +28,7 @@ namespace TddWorkshop.Tests
             var input = "";
             
             // Act
-            var result = IbanValidator.IsValid(input);
+            var result = new IbanValidator(new BankCodeProvider()).IsValid(input);
 
             // Assert
             Assert.False(result);
@@ -36,7 +38,7 @@ namespace TddWorkshop.Tests
         public void NullShouldThrowArgumentException()
         {
             var exception = Assert
-                .Throws<ArgumentNullException>(() => IbanValidator.IsValid(null));
+                .Throws<ArgumentNullException>(() => new IbanValidator(new BankCodeProvider()).IsValid(null));
             
             Assert.Equal("input", exception.ParamName);
             exception
@@ -48,7 +50,7 @@ namespace TddWorkshop.Tests
         [Fact]
         public void NullShouldThrowArgumentExceptionWithAssertionFramework()
         {
-            Action act = () => IbanValidator.IsValid(null);
+            Action act = () => new IbanValidator(new BankCodeProvider()).IsValid(null);
             act.Should()
                 .Throw<ArgumentNullException>()
                 .Which
@@ -59,14 +61,14 @@ namespace TddWorkshop.Tests
         
         [Fact]
         public void NoCheckCodeReturnsFalse() => 
-            IbanValidator
+            new IbanValidator(new BankCodeProvider())
                 .IsValid("NLXX INGB 0002 4455 88")
                 .Should()
                 .BeFalse();
         
         [Fact]
         public void InvalidBankCodeReturnsFalse() => 
-            IbanValidator
+            new IbanValidator(new BankCodeProvider())
                 .IsValid("NL86XXXX0002445588")
                 .Should()
                 .BeFalse();
@@ -76,10 +78,36 @@ namespace TddWorkshop.Tests
         [InlineData("NL11RABO0110099222", true, "gemeente amsterdam")]
         [Theory]
         public void ShouldAlsoWorkFor(string iban, bool expected, string because) => 
-            IbanValidator.IsValid(iban).Should().Be(expected, because);
+            new IbanValidator(new BankCodeProvider()).IsValid(iban).Should().Be(expected, because);
 
         [Fact]
         public void ValidBelgianIbanShouldReturnTrue() => 
-            IbanValidator.IsValid("BE57 6792 0060 9235").Should().BeTrue();
+            new IbanValidator(new BankCodeProvider()).IsValid("BE57 6792 0060 9235").Should().BeTrue();
+        
+        [Fact]
+        public void GivenMockTellingBankCodeDoesNotExist_WhenValidating_ThenReturnFalse()
+        {
+            var provider = Substitute.For<IBankCodeProvider>();
+            provider.BankCodes().Returns(new string[0]);
+            
+            new IbanValidator(provider)
+                .IsValid("NL11RABO0110099222")
+                .Should()
+                .BeFalse();
+        }
+        
+        [Fact]
+        public void GivenMoqTellingBankCodeDoesNotExist_WhenValidating_ThenReturnFalse()
+        {
+            var provider = new Mock<IBankCodeProvider>();
+            provider
+                .Setup(x => x.BankCodes())
+                .Returns(new string[0]);
+            
+            new IbanValidator(provider.Object)
+                .IsValid("NL11RABO0110099222")
+                .Should()
+                .BeFalse();
+        }
     }
 }
