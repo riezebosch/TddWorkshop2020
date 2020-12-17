@@ -1,22 +1,33 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TddWorkshop
 {
     public static class IbanValidator
     {
+        private const int CountryCodeLength = 2;
+
+        private static readonly IDictionary<string, IIbanValidator> Validators = new Dictionary<string, IIbanValidator>
+        {
+            ["BE"] = new IbanValidatorBE(),
+            ["NL"] = new IbanValidatorNL()
+        };
+        
         public static bool IsValid(string input)
         {
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
             input = input.Replace(" ", "");
+            if (input.Length < CountryCodeLength)
+            {
+                return false;
+            }
             
-            return 
-                !string.IsNullOrEmpty(input) 
-                && input.StartsWith("NL")
-                && int.TryParse(input.Substring(2, 2), out _)
-                && new[] { "INGB", "RABO" }.Contains(input.Substring(4, 4));
+            return Validators.TryGetValue(input.Substring(0, CountryCodeLength), out var validator) 
+                   && validator.Check(input);
         }
     }
 }

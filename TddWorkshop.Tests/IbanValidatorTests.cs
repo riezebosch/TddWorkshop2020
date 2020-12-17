@@ -77,5 +77,9 @@ namespace TddWorkshop.Tests
         [Theory]
         public void ShouldAlsoWorkFor(string iban, bool expected, string because) => 
             IbanValidator.IsValid(iban).Should().Be(expected, because);
+
+        [Fact]
+        public void ValidBelgianIbanShouldReturnTrue() => 
+            IbanValidator.IsValid("BE57 6792 0060 9235").Should().BeTrue();
     }
 }
