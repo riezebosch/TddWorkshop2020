@@ -4,21 +4,21 @@ namespace TddWorkshop
 {
     internal class IbanValidatorNL : IIbanValidator
     {
+        private readonly IBankCodeProvider _bankCodeProvider;
+        public IbanValidatorNL(IBankCodeProvider bankCodeProvider) => 
+            _bankCodeProvider = bankCodeProvider;
+
         public bool Check(string input)
         {
-            return !string.IsNullOrEmpty(input) 
-                   && CheckCountryCode(input) 
+            return !string.IsNullOrEmpty(input)
                    && CheckControlCode(input)
                    && CheckBankCode(input);
         }
 
-        private static bool CheckBankCode(string input) => 
-            new[] { "INGB", "RABO" }.Contains(input.Substring(4, 4));
+        private bool CheckBankCode(string input) => 
+            _bankCodeProvider.BankCodes().Contains(input.Substring(4, 4));
 
         private static bool CheckControlCode(string input) => 
             int.TryParse(input.Substring(2, 2), out _);
-
-        private static bool CheckCountryCode(string input) => 
-            input.StartsWith("NL");
     }
 }

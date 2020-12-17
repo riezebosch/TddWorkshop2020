@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace TddWorkshop
 {
@@ -12,7 +10,7 @@ namespace TddWorkshop
         private static readonly IDictionary<string, IIbanValidator> Validators = new Dictionary<string, IIbanValidator>
         {
             ["BE"] = new IbanValidatorBE(),
-            ["NL"] = new IbanValidatorNL()
+            ["NL"] = new IbanValidatorNL(new BankCodeProvider())
         };
         
         public static bool IsValid(string input)
