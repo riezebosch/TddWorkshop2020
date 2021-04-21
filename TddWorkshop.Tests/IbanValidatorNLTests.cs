@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 
@@ -12,18 +13,18 @@ namespace TddWorkshop.Tests
             var iban = "NL86INGB0002445588";
             var expected = true;
 
-            var actual = IbanValidatorNL.IsValid(iban);
+            var actual = new IbanValidatorNL(new TestBankCodesProvider()).IsValid(iban);
             
             Assert.Equal(expected, actual);
         }
-        
+
         [Fact]
         public void InvalidBankCodeReturnsFalse()
         {
             var iban = "NL86INXB0002445588";
             var expected = false;
 
-            var actual = IbanValidatorNL.IsValid(iban);
+            var actual = new IbanValidatorNL(new TestBankCodesProvider()).IsValid(iban);
             
             Assert.Equal(expected, actual);
         }
@@ -34,7 +35,7 @@ namespace TddWorkshop.Tests
             var iban = "";
             var expected = false;
 
-            var actual = IbanValidatorNL.IsValid(iban);
+            var actual = new IbanValidatorNL(new TestBankCodesProvider()).IsValid(iban);
             
             Assert.Equal(expected, actual);
         }
@@ -45,27 +46,23 @@ namespace TddWorkshop.Tests
             var iban = "NL86INGB000244558845678";
             var expected = false;
 
-            var actual = IbanValidatorNL.IsValid(iban);
+            var actual = new IbanValidatorNL(new TestBankCodesProvider()).IsValid(iban);
             
             Assert.Equal(expected, actual);
         }
         
         [Fact]
         public void InvalidBankCodeShouldBeFalse() => 
-            IbanValidatorNL
+            new IbanValidatorNL(new TestBankCodesProvider())
                 .IsValid("NL86YYYY0002445588")
                 .Should()
                 .BeFalse();
 
-        [Theory]
-        [InlineData("NL25ABNA0477256600")]
-        [InlineData("NL31DEUT0319810577")]
-        public void ValidIbanFromOtherBanks(string iban)
+        
+        private class TestBankCodesProvider : IBankCodesProvider
         {
-            IbanValidatorNL
-                .IsValid(iban)
-                .Should()
-                .BeTrue();
+            public IEnumerable<string> BankCodes() => 
+                new[] { "INGB"};
         }
     }
 }

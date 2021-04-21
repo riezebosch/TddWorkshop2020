@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TddWorkshop", "TddWorkshop\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TddWorkshop.NUnit.Tests", "TddWorkshop.NUnit.Tests\TddWorkshop.NUnit.Tests.csproj", "{88BA7B28-657A-4883-94B9-33C2B0ECB1E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TddWorkshop.IntegrationTests", "TddWorkshop.IntegrationTests\TddWorkshop.IntegrationTests.csproj", "{1512602D-09D4-4F6E-90C8-9C371827BD6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{88BA7B28-657A-4883-94B9-33C2B0ECB1E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88BA7B28-657A-4883-94B9-33C2B0ECB1E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88BA7B28-657A-4883-94B9-33C2B0ECB1E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1512602D-09D4-4F6E-90C8-9C371827BD6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1512602D-09D4-4F6E-90C8-9C371827BD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1512602D-09D4-4F6E-90C8-9C371827BD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1512602D-09D4-4F6E-90C8-9C371827BD6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
