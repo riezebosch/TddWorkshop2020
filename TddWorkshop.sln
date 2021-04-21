@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TddWorkshop.Tests", "TddWor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TddWorkshop", "TddWorkshop\TddWorkshop.csproj", "{FE55D1BB-D13C-4C98-8CE3-65BF57EF4F65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TddWorkshop.NUnit.Tests", "TddWorkshop.NUnit.Tests\TddWorkshop.NUnit.Tests.csproj", "{88BA7B28-657A-4883-94B9-33C2B0ECB1E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{FE55D1BB-D13C-4C98-8CE3-65BF57EF4F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE55D1BB-D13C-4C98-8CE3-65BF57EF4F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE55D1BB-D13C-4C98-8CE3-65BF57EF4F65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88BA7B28-657A-4883-94B9-33C2B0ECB1E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88BA7B28-657A-4883-94B9-33C2B0ECB1E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88BA7B28-657A-4883-94B9-33C2B0ECB1E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88BA7B28-657A-4883-94B9-33C2B0ECB1E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
