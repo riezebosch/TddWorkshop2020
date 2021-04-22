@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +13,8 @@ namespace TddWorkshop
 
         public bool IsValid(string iban)
         {
+            if (iban == null) throw new ArgumentNullException(nameof(iban));
+            
             return IsValidLength(iban) && 
                    IsValidBankCode(iban);
         }
