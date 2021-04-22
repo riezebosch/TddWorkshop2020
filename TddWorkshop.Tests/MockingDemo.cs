@@ -7,13 +7,6 @@ namespace TddWorkshop.Tests
     public class MockingDemo
     {
         [Fact]
-        public void MetDeEchteImplementatieDusLangzaam()
-        {
-            var validator = new IbanValidatorNL(new DatabaseBankCodesProvider());
-            Assert.True(validator.IsValid("NL86INGB0002445588"));
-        }
-        
-        [Fact]
         public void HandRolledMock()
         {
             var validator = new IbanValidatorNL(new HandRolledMock());

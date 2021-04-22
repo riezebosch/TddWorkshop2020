@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using TddWorkshop;
+using TddWorkshop.BankCodesProvider.Database;
 
 namespace ConsoleApp1
 {
@@ -11,7 +12,7 @@ namespace ConsoleApp1
             var iban = Console.ReadLine();
 
             var services = new ServiceCollection()
-                .AddSingleton<IBankCodesProvider, DatabaseBankCodesProvider>()
+                .AddSingleton<IBankCodesProvider, Provider>()
                 .AddSingleton<IbanValidatorNL>()
                 .BuildServiceProvider();
 

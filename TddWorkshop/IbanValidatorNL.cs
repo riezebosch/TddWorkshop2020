@@ -10,11 +10,7 @@ namespace TddWorkshop
 
         public IbanValidatorNL(IBankCodesProvider provider) => 
             _provider = provider;
-
-        public IbanValidatorNL() : this(new DatabaseBankCodesProvider())
-        {
-        }
-
+        
         public bool IsValid(string iban)
         {
             if (iban == null) throw new ArgumentNullException(nameof(iban));

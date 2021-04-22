@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\TddWorkshop.BankCodesProvider.Database\TddWorkshop.BankCodesProvider.Database.csproj" />
       <ProjectReference Include="..\TddWorkshop\TddWorkshop.csproj" />
     </ItemGroup>
 

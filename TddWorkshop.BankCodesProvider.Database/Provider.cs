@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace TddWorkshop
+namespace TddWorkshop.BankCodesProvider.Database
 {
-    public class DatabaseBankCodesProvider : IBankCodesProvider
+    public class Provider : IBankCodesProvider
     {
         public IEnumerable<string> BankCodes()
         {

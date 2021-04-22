@@ -1,5 +1,6 @@
 using System;
 using FluentAssertions;
+using TddWorkshop.BankCodesProvider.Database;
 using Xunit;
 
 namespace TddWorkshop.IntegrationTests
@@ -12,7 +13,7 @@ namespace TddWorkshop.IntegrationTests
         [InlineData("NL31DEUT0319810577")]
         public void ValidIbanFromOtherBanks(string iban)
         {
-            new IbanValidatorNL(new DatabaseBankCodesProvider())
+            new IbanValidatorNL(new Provider())
                 .IsValid(iban)
                 .Should()
                 .BeTrue();
